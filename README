@@ -1,0 +1,20 @@
+Primera parte del código: 
+
+1.- Nociones:
+
+Comenzaré con la parte de como abordar el problema de mallado de datos por nodos, debido que para la toma de datos tenemos una superfice, la cual necesitamos tener relacionados 
+todos los datos, de manera "cúbica" y cúbica me refiero a un cuerpo geométrica, debido que:
+
+Para comenzar hablamos sobre como nosotros vemos el problema, partiendo por: el tener en cuenta que tenemos 2 cuadrados de lado "a" (aislante y superficie caliente), y despues 
+se transforma en un "paralelepípedo" o en "cubos" sobre "cubos" linealmente en un solo eje (hacia una dirección positiva de las caras), si nos basamos en aquello, debemos 
+considerar de que la superficie es "constante única", y nuestra variación se realizará a través de la 3ª dimensión por uno de los ejes, positivo (convenientemente para probar 
+algún comportamiento en el tiempo).
+
+	Considerando los casos el apartado anterior, crearemos una matriz volumnétrica para poder hacer la organizacion de los datos en 3 dimensiones, para lo que crearemos 
+aquella matriz condsiderando algunos parámetros importantes, parámetros de las 2 caras en cuestión de un paralelepípedo, debido que esta superficie la haremos con 2 tapas 
+cerrando el conjunto de datos como "Puntos Frontera".
+
+	Por lo tanto.......
+
+
+Pendiente.
