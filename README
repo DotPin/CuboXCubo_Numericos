@@ -14,7 +14,20 @@ algún comportamiento en el tiempo).
 aquella matriz condsiderando algunos parámetros importantes, parámetros de las 2 caras en cuestión de un paralelepípedo, debido que esta superficie la haremos con 2 tapas 
 cerrando el conjunto de datos como "Puntos Frontera".
 
-	Por lo tanto.......
+	Por lo tanto, al tomar en consideración estos parámetros, debemos considerar las condiciones iniciales de cada uno de los bordes de la superficie, separadas en 3 etapas:
+
+1º Resolver problemas con los vértices y luego las aristas, según su traslación hacia el eje z de las 2 caras.
+2º Resolver el problema de condiciones iniciales en las caras extendidas que rodea la superficie.
+3º Integrar cada nodo con su interior y condiciones de borde usando diferencias divididas para todo lo anterior.
 
 
-Pendiente.
+Planteamiento:
+Por el momento se realizó el calculo de condiciones de borde en vértices de las 2 caras.
+
+Código:
+solo la función que crea la matriz tridimencional.
+
+Luego: 
+Agregar las condiciones de borde según el recorrido de la superficie por celdas.
+
+
