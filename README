@@ -16,13 +16,13 @@ cerrando el conjunto de datos como "Puntos Frontera".
 
 	Por lo tanto, al tomar en consideración estos parámetros, debemos considerar las condiciones iniciales de cada uno de los bordes de la superficie, separadas en 3 etapas:
 
-1º Resolver problemas con los vértices y luego las aristas, según su traslación hacia el eje z de las 2 caras.
+1º Resolver el problema de condiciones iniciales para las caras laterales del aislante y sección caliente.
 2º Resolver el problema de condiciones iniciales en las caras extendidas que rodea la superficie.
 3º Integrar cada nodo con su interior y condiciones de borde usando diferencias divididas para todo lo anterior.
 
 
 Planteamiento:
-Por el momento se realizó el calculo de condiciones de borde en vértices de las 2 caras.
+Establecer las condiciones iniciales para nodos INTERIORES de toda la superficie, debido que las condiciones de borde, ya están establecidas.
 
 Código:
 solo la función que crea la matriz tridimencional.
