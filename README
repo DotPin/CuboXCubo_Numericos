@@ -25,9 +25,14 @@ Planteamiento:
 Establecer las condiciones iniciales para nodos INTERIORES de toda la superficie, debido que las condiciones de borde, ya están establecidas.
 
 Código:
-solo la función que crea la matriz tridimencional.
+*función que crea la matriz tridimencional.
+*rellenado las condiciones de bores externos
+*creada la estructura de datos que genera cada coordenada, será un diccionario de variable
+	T = {'dx': '(ant_X'+'-2*central_X'+'dsp_X)/delta(x)', 'dy': '(ant_Y'+'-2*central_Y'+'dsp_Y)/delta(y)', 'dz': '(ant_Z'+'-2*central_Z'+'dsp_Z)/delta(z)' }
 
 Luego: 
-Agregar las condiciones de borde según el recorrido de la superficie por celdas.
+*Agregar las condiciones de borde según el recorrido de la superficie por celdas(Listo solo una parte).
+*Continuar con condiciones de borde con k=1 and z-2, i=1 and xx-2, j=1 and xx-2, la cual habla de la diferencia dividida no central.
+*hacer la suma de valores generados en matriz en alguna estructura de datos para almacenar y sumar la elíptica
 
 
