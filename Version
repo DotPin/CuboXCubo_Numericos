@@ -12,3 +12,4 @@ git push origin {rama}
 Version 2.0
 
 En esta versión realizaremos la suma de los nodos para el laplaciano de diferencias finitas
+*empleando dif finitas con condiciones de neuman
