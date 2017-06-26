@@ -16,8 +16,8 @@ xx=3
 xy=4
 z=6
 
-xx= int(round(xx/dx))
-xy = int(round(xy/dy))
+xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
+xy = int(round(xy/dy))		#las deja en entero para poder generar la matriz 3D
 z= int(round(z/dz))
 
 prl = [[["" for x in xrange(xx)] for x in xrange(xx)] for x in xrange(z)]
