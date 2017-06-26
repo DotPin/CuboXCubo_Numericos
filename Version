@@ -5,3 +5,8 @@ git push origin {rama}
 
 *cambiando lo 1º y cambiando codigo de condiciones de borde
 *llenado matriz con volumen de variables symbolicas
+
+
+Version 2.0
+
+En esta versión realizaremos la suma de los nodos para el laplaciano de diferencias finitas
