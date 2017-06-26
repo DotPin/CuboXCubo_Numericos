@@ -3,6 +3,21 @@
 
 from sympy import *
 
+def mostrar(texto):
+  print "************************{}******************************".format(texto)
+
+  for i in range(0,z):		#relleno con las variables "symbolic" a nodos equisdistantes
+    print "Cara {}".format(i)
+    for j in range(0,xx):		#por dentro de la superficie
+      for k in range(0,xx):
+	if prl[i][j][k] != "":
+	  print prl[i][j][k],
+	else:
+	  print "\t",
+	#print "{} \t".format(prl[i][j][k])
+      print "\n"
+
+
 h = 0.999999999999	#condicion de temperaturas
 R = 12	#temperatura refrigerante
 A = h*(0 - R)	#condicion Cara Aislante
@@ -28,11 +43,16 @@ for i in range(0,z):		#rellenado condiciones de borde
       prl[i][xx-1][j] = R
       prl[i][j][0] = R
       prl[i][j][xx-1] = R
+
+mostrar("Condiciones de Borde")
       
-for i in range(0,xx):		#Rellenando condiciones en caras
-  for j in range(0,x):
+  
+for i in range(1,xx-1):		#Rellenando condiciones en caras
+  for j in range(1,xx-1):
     prl[0][i][j] = A
     prl[z-1][i][j] = B
+
+mostrar("Condiciones en Caras")
 
 in_nd = 0
 for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdistantes
@@ -45,17 +65,10 @@ for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdista
       prl[i][j][k] = sy
       print "{}".format(prl[i][j][k])
       in_nd += 1		#numerará los nodos uno x uno hasta terminar cada celda de la matriz	
-    
-print "************************Mostrando Matriz******************************"
 
-for i in range(0,z):		#relleno con las variables "symbolic" a nodos equisdistantes
-  print "Cara {}".format(i)
-  for j in range(0,xx):		#por dentro de la superficie
-    for k in range(0,xx):
-      print prl[i][j][k],
-      #print "{} \t".format(prl[i][j][k])
-      in_nd += 1
-    print "\n"
+mostrar("Condiciones LLenado")    
+
+
 
     
 w = ["" for x in range(xx*z*xx)]
