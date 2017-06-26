@@ -29,13 +29,13 @@ def m_cuadrada(xx,z):
 	    
 	elif k==z-1:
 	  #zona caliente
-	  if i=0 or i==xx-1 or j=0 or j == xx-1:
+	  if i==0 or i==xx-1 or j==0 or j == xx-1:
 	    prl[k][i][j] = R	#Borde cara
 	  elif i>0 or i<xx-1 or j>0 or j<xx-1:
 	    prl[k][i][j] = C	#Interior cara
 	elif k>0 and k<z-1:
 	  #rellenando borde material conductivo
-	  if i=0 or i==xx-1 or j=0 or j == xx-1:
+	  if i==0 or i==xx-1 or j==0 or j == xx-1:
 	    prl[k][i][j] = R	#Borde cara
 	  elif i>0 or i<xx-1 or j>0 or j<xx-1:
 	    prl[k][i][j] = C	#Interior cara
@@ -44,6 +44,7 @@ def m_cuadrada(xx,z):
   
 
 xx =input("Ingrese Valor de Lado: ")
+print "debug: ",+xx
 z =input("Ingrese Valor de profundidad: ")
 
 m_cuadrada(xx,z)
