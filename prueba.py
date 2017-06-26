@@ -73,3 +73,8 @@ mostrar("Condiciones LLenado")
 w = ["" for x in range(xx*z*xx)]
 
 #Recorriendo matriz
+in_nd = 0
+for i in range
+
+
+
