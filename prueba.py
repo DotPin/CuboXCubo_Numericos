@@ -4,7 +4,7 @@
 from sympy import *
 
 
-#DEclaracion de variables
+#Declaracion de variables
 h = 0.999999999999	#condicion de temperaturas
 R = 12	#temperatura refrigerante
 A = 0	#condicion Cara Aislante
@@ -14,13 +14,13 @@ dx = 0.25
 dy = 0.1
 dz = 0.5
 
-xx=4
+xx=3
 #xy=4
-z=5
+z=4
 
-#xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
+xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
 #xy = int(round(xy/dy))		#las deja en entero para poder generar la matriz 3D
-#z= int(round(z/dz))
+z= int(round(z/dz))
 
 #<********************Declaracion de métodos
 
@@ -101,16 +101,16 @@ mostrar("LLenado")
 
 #x = ["" for x in range(xx*z)] generar vector para generar matriz H[x*y*z] y rellenar con ecuación elíptica de nodos
 #despues generar matriz con datos de tipo A[x*y*z,x*y*z] y vector B[x*y*z] a incógnitas de tipo Ax=B
-w = ["" for x in range((xx-1)*(z-1)*(xx-1))] 
+w = ["" for x in range((xx-2)*(z-2)*(xx-2))] 
 
 #Recorriendo matriz
 in_nd = 0
-for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdistantes
+for i in range(1,z-1):		
   print "Cara {}".format(i)
-  for j in range(1,xx-1):		#por dentro de la superficie
+  for j in range(1,xx-1):		
     for k in range(1,xx-1):
       w[in_nd] = ddtx(prl[i][j][k+1],prl[i][j][k],prl[i][j][k-1],k) + ddty(prl[i][j+1][k],prl[i][j][k],prl[i][j-1][k-1],j) + ddtx(prl[i+1][j][k],prl[i][j][k],prl[i-1][j][k],i)
-      in_nd += 1		#numerará los nodos uno x uno hasta terminar cada celda de la matriz	
+      in_nd += 1		
 
 for i in range(len(w)):
   print w[i]
