@@ -8,9 +8,17 @@ R = 12	#temperatura refrigerante
 A = h*(0 - R)	#condicion Cara Aislante
 B = h*(60 - R)	#condicion 4
 
+dx = 0.25
+dy = 0.1
+dz = 0.5
+
 xx=3
-xy = 4
-z=5
+xy=4
+z=6
+
+xx= int(round(xx/dx))
+xy = int(round(xy/dy))
+z= int(round(z/dz))
 
 prl = [[["" for x in xrange(xx)] for x in xrange(xx)] for x in xrange(z)]
 
@@ -32,11 +40,11 @@ for i in range(0,xx):		#Rellenando condiciones en caras
     prl[z-1][i][j] = B
 
 in_nd = 0
-for i in range(0,z):		#relleno con las variables "symbolic" a nodos equisdistantes
+for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdistantes
   print "print i {}".format(i)
-  for j in range(0,xx):		#por dentro de la superficie
+  for j in range(1,xx-1):		#por dentro de la superficie
     print "print j {}".format(j)
-    for k in range(0,xx):
+    for k in range(1,xx-1):
       print "print k {}".format(k)
       nd = "T"+str(in_nd)
       sy = symbols(nd)
