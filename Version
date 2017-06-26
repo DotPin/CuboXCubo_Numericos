@@ -7,3 +7,5 @@ git push origin {rama}
 *Condiciones de borde arregladas
 *Condiciones por cara Arregladas
 *Llenado de matriz con volumen de variables symbolicas para nodos
+
+Version alternativa para compilar CuboXCUbo.py
