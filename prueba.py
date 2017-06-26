@@ -20,8 +20,8 @@ def mostrar(texto):
 
 h = 0.999999999999	#condicion de temperaturas
 R = 12	#temperatura refrigerante
-A = h*(0 - R)	#condicion Cara Aislante
-B = h*(60 - R)	#condicion 4
+A = 0	#condicion Cara Aislante
+B = 60	#condicion 4
 
 dx = 0.25
 dy = 0.1
@@ -68,10 +68,8 @@ for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdista
 
 mostrar("Condiciones LLenado")    
 
-
-
-    
-w = ["" for x in range(xx*z*xx)]
-      
 #x = ["" for x in range(xx*z)] generar vector para generar matriz H[x*y*z] y rellenar con ecuación elíptica de nodos
 #despues generar matriz con datos de tipo A[x*y*z,x*y*z] y vector B[x*y*z] a incógnitas de tipo Ax=B
+w = ["" for x in range(xx*z*xx)]
+
+#Recorriendo matriz
