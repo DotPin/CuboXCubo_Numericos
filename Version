@@ -1,4 +1,7 @@
 Version 1.1
+Recordar que despues de hacer el primer, commit el primer push de tu rama es:
+
+git push origin {rama}
 
 *cambiando lo 1º y cambiando codigo de condiciones de borde
 *llenado matriz con volumen de variables symbolicas
