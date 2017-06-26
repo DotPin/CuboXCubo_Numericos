@@ -16,3 +16,8 @@ En esta versión realizaremos la suma de los nodos para el laplaciano de diferen
 *diferencias finitas con nodo central realizada
 *ecuaciones lineales a punto centra con respecto al laplaciano lista
 
+
+Version 3.0
+
+En esta version haremos la descomposicion de cada elemento del vector w[], ecuaciones lineales, pasarlo a matriz de tipo Ax = B para terminar con exportarlo en archivo de texto.
+
