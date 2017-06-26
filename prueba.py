@@ -53,3 +53,5 @@ for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdista
       print prl
       in_nd += 1		#numerará los nodos uno x uno hasta terminar cada celda de la matriz
       
+#x = ["" for x in range(xx*z)] generar vector para generar matriz H[x*y*z] y rellenar con ecuación elíptica de nodos
+#despues generar matriz con datos de tipo A[x*y*z,x*y*z] y vector B[x*y*z] a incógnitas de tipo Ax=B
