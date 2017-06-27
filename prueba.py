@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from sympy import *
+import csv
 
 
 #Declaracion de variables
@@ -19,9 +20,9 @@ xx=4
 #xy=4
 z=4
 
-#xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
+xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
 #xy = int(round(xy/dy))		#las deja en entero para poder generar la matriz 3D
-#z= int(round(z/dz))
+z= int(round(z/dz))
 
 #<********************Declaracion de métodos**********************
 
@@ -143,9 +144,9 @@ def mM(aa,txt):
 def mB(aa,txt):
   B[aa] = txt
 
-M = [["" for x in xrange((xx-2)*(z-2)*(xx-2))] for x in xrange((xx-2)*(z-2)*(xx-2))]	#genera matriz M
+M = [[0 for x in xrange((xx-2)*(z-2)*(xx-2))] for x in xrange((xx-2)*(z-2)*(xx-2))]	#genera matriz M
 
-B = ["" for x in xrange((xx-2)*(z-2)*(xx-2))]	#Vector B perteneciente a la matriz
+B = [0 for x in xrange((xx-2)*(z-2)*(xx-2))]	#Vector B perteneciente a la matriz
 
 for a in range(len(w)):
   sp = str(w[a]).split("+")
@@ -172,25 +173,17 @@ for a in range(len(w)):
       ptf = b.split("*")
       mM(a,ptf)
 
-for a in range (0, (xx-2)*(z-2)*(xx-2)):
-  for b in range (0, (xx-2)*(z-2)*(xx-2)):
-    print M[a][b],
-  print " = {}".format(B[a])
-  print "\n"
-  
+dataCSV2 = open("matriz_b", "wb")
+wr = csv.writer(dataCSV2, dialect='excel')
+wr.writerows([B])
+
+
+dataCSV = open("matriz_a", "wb")
+writer = csv.writer(dataCSV, dialect='excel')
+writer.writerows(M)
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+            
+
 
