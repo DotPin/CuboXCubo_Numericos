@@ -1,6 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+#Para la ejecución de éste código es necesario tener instalado python v2.7 o superior
+#ademas tener instalada la paquetería python-sympy
+#desde linux $sudo apt-get install python-sympy
+#para windows descargar e instalar el paquete sympy desde el siguiente link:https://pypi.python.org/pypi/sympy
+
+
 from sympy import *
 import csv
 
@@ -12,17 +18,25 @@ R = 12	#temperatura refrigerante
 A = 0	#condicion Cara Aislante
 B = 60	#condicion 4
 
-dx = 0.25
-dy = 0.1
+dx = 0.5
+dy = 0.5
 dz = 0.5
 
-xx=6
+#xx=6
 #xy=4
-z=9
+#z=9
+dx = input("INgrese valor dx entre 0<dx<1: ")
+dy = input("INgrese valor dy entre 0<dy<1: ")
+dz = input("INgrese valor dz entre 0<dz<1: ")
 
-#xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
-#xy = int(round(xy/dy))		#las deja en entero para poder generar la matriz 3D
-#z= int(round(z/dz))
+
+xx = input("Ingrese el lado cuadrado: ")
+z = input("Ingrese profundidad de la superficie: ")
+
+#Para el caso de evaluar con deltas descomentar las 2 lineas inferiores
+
+xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
+z= int(round(z/dz))
 
 #<********************Declaracion de métodos**********************
 
@@ -30,6 +44,7 @@ def mostrar(texto):
   print "************************{}******************************".format(texto)
 
   for i in range(0,z):		#relleno con las variables "symbolic" a nodos equisdistantes
+    print "cara {}".format(i)
     for j in range(0,xx):		#por dentro de la superficie
       for k in range(0,xx):
 	if prl[i][j][k] != "":
@@ -57,9 +72,9 @@ def ddtx(x,y,z,i):
 
 def ddtz(x,y,z,k):
   if k==1:
-    z = x-2*dy*h*(x-R)
+    z = x-2*dy*h*(x-A)
   elif k==z-2:
-    x = z-2*dy*h*(z-R)
+    x = z-2*dy*h*(z-B)
   zzz = (x-2*y+z)/(dz*dz)
   return zzz
 
