@@ -16,13 +16,13 @@ dx = 0.25
 dy = 0.1
 dz = 0.5
 
-xx=4
+xx=6
 #xy=4
-z=4
+z=9
 
-xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
+#xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
 #xy = int(round(xy/dy))		#las deja en entero para poder generar la matriz 3D
-z= int(round(z/dz))
+#z= int(round(z/dz))
 
 #<********************Declaracion de métodos**********************
 
