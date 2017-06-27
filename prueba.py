@@ -5,6 +5,7 @@ from sympy import *
 
 
 #Declaracion de variables
+
 h = 0.999999999999	#condicion de temperaturas
 R = 12	#temperatura refrigerante
 A = 0	#condicion Cara Aislante
@@ -14,21 +15,20 @@ dx = 0.25
 dy = 0.1
 dz = 0.5
 
-xx=3
+xx=4
 #xy=4
 z=4
 
-xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
+#xx= int(round(xx/dx))		#dx dy dz son variaciones dif_finitias del nodo para calcular dimensiones correctas de la matriz 3D
 #xy = int(round(xy/dy))		#las deja en entero para poder generar la matriz 3D
-z= int(round(z/dz))
+#z= int(round(z/dz))
 
-#<********************Declaracion de métodos
+#<********************Declaracion de métodos**********************
 
 def mostrar(texto):
   print "************************{}******************************".format(texto)
 
   for i in range(0,z):		#relleno con las variables "symbolic" a nodos equisdistantes
-    print "Cara {}".format(i)
     for j in range(0,xx):		#por dentro de la superficie
       for k in range(0,xx):
 	if prl[i][j][k] != "":
@@ -62,6 +62,7 @@ def ddtz(x,y,z,k):
   zzz = (x-2*y+z)/(dz*dz)
   return zzz
 
+#<********************Fin Declaracion de métodos*************************
 
 
 #Inicio del programa principal
@@ -87,7 +88,6 @@ mostrar("Condiciones en Caras")
 
 in_nd = 0
 for i in range(1,z-1):		#relleno con las variables "symbolic" a nodos equisdistantes
-  print "Cara {}".format(i)
   for j in range(1,xx-1):		#por dentro de la superficie
     for k in range(1,xx-1):
       nd = "T"+str(in_nd)
@@ -101,16 +101,111 @@ mostrar("LLenado")
 
 #x = ["" for x in range(xx*z)] generar vector para generar matriz H[x*y*z] y rellenar con ecuación elíptica de nodos
 #despues generar matriz con datos de tipo A[x*y*z,x*y*z] y vector B[x*y*z] a incógnitas de tipo Ax=B
-w = ["" for x in range((xx-2)*(z-2)*(xx-2))] 
 
-#Recorriendo matriz
+
+
+#Haciendo algoritmo para diferencias divididas, para generar los polinomios lineales por cada nodo de la ecuacion laplaceana en 3D.
+
+w = ["" for x in range((xx-2)*(z-2)*(xx-2))]		#Vector para guardar las ecuaciones lineales
+
+
 in_nd = 0
 for i in range(1,z-1):		
-  print "Cara {}".format(i)
   for j in range(1,xx-1):		
     for k in range(1,xx-1):
       w[in_nd] = ddtx(prl[i][j][k+1],prl[i][j][k],prl[i][j][k-1],k) + ddty(prl[i][j+1][k],prl[i][j][k],prl[i][j-1][k-1],j) + ddtx(prl[i+1][j][k],prl[i][j][k],prl[i-1][j][k],i)
       in_nd += 1		
 
-for i in range(len(w)):
+for i in range(len(w)):			#Corroboramos que las ecuaciones estén bien ejecutadas
   print w[i]
+  
+print "\n\n\n\n\n\n\n\n\n\n"
+#Realizando descomposición de ecuaciones lineales a matriz
+
+#def mM1(aa,txt):
+  #print txt
+  #pt2 = txt[len(txt)-1].split("T")
+  #print pt2
+  #l = int(pt2[len(txt)-1])
+  #ng = txt[0].split("-")
+  #ng2 = float(ng[len(ng)-1])*-1
+  #M[aa][l] = ng2
+
+def mM1(aa,txt):
+  print "metodo mm1"
+  print txt
+  tt = txt[1].split("T")
+  l = int(tt[1])
+  if txt[0].find("-") != -1:
+    M[aa][l] = float(i)
+  else:
+    bt = txt[0].split("-")
+    print bt
+    bt[1] = "-"+bt[1]
+    M[aa][l] = float(bt[1])
+  
+  
+  #M[aa][l]
+  
+def mM(aa,txt):
+  
+  pt2 = txt[len(txt)-1].split("T")
+  l = int(pt2[len(txt)-1])
+  
+  ng2 = float(txt[0])
+  M[aa][l] = ng2
+
+def mB(aa,txt):
+  B[aa] = txt
+
+M = [["" for x in xrange((xx-2)*(z-2)*(xx-2))] for x in xrange((xx-2)*(z-2)*(xx-2))]	#genera matriz M
+
+B = ["" for x in xrange((xx-2)*(z-2)*(xx-2))]	#Vector B perteneciente a la matriz
+
+for a in range(len(w)):
+  sp = str(w[a]).split("+")
+  for b in sp:
+    if b.find("-")!= -1:		#determina si algúno posee negativo
+      
+      if b.find("-")<2:
+	pt = b.split("-")		#separa el negativo
+	pt[1] = "-"+pt[1]	
+      else:
+	pt = b.split("-")		#separa el negativo
+	pt[1] = "-"+pt[1]	
+	
+      for c in pt:		#luego separa el multiplicador
+	if c != "":
+	  pt1 = c.split("*")	
+	  mM1(a,pt1)		#funcion para meterlo a matriz
+    elif b.find("*")<0:
+      if b == "":
+	mB(a,0)
+      else:
+	mB(a,float(b))
+    else:  
+      ptf = b.split("*")
+      mM(a,ptf)
+
+for a in range (0, (xx-2)*(z-2)*(xx-2)):
+  for b in range (0, (xx-2)*(z-2)*(xx-2)):
+    print M[a][b],
+  print " = {}".format(B[a])
+  print "\n"
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
