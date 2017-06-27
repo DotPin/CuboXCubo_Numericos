@@ -119,33 +119,18 @@ for i in range(1,z-1):
 for i in range(len(w)):			#Corroboramos que las ecuaciones estén bien ejecutadas
   print w[i]
   
-print "\n\n\n\n\n\n\n\n\n\n"
+print "\n\n"
 #Realizando descomposición de ecuaciones lineales a matriz
 
-#def mM1(aa,txt):
-  #print txt
-  #pt2 = txt[len(txt)-1].split("T")
-  #print pt2
-  #l = int(pt2[len(txt)-1])
-  #ng = txt[0].split("-")
-  #ng2 = float(ng[len(ng)-1])*-1
-  #M[aa][l] = ng2
-
 def mM1(aa,txt):
-  print "metodo mm1"
-  print txt
   tt = txt[1].split("T")
-  l = int(tt[1])
-  if txt[0].find("-") != -1:
-    M[aa][l] = float(i)
-  else:
-    bt = txt[0].split("-")
-    print bt
-    bt[1] = "-"+bt[1]
-    M[aa][l] = float(bt[1])
+  l = int(tt[1])		#sin problemas aki
+  if txt[0].find("-")>-1:
+    pl = txt[0].split("-")
+    ppl = float(pl[1])
+    txt[0] = float(ppl*-1)
+  M[aa][l] = float(txt[0])
   
-  
-  #M[aa][l]
   
 def mM(aa,txt):
   
